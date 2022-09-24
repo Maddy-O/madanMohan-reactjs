@@ -2,9 +2,15 @@ import React from "react";
 
 const NavBar = () => {
   return (
-    <div style={{ display: "flex", justifyContent: "center", gap: "150px" }}>
-      <h5>All Products</h5>
-      <h5>Favorite Products</h5>
+    <div
+      style={{
+        padding: "0px 50px",
+        display: "flex",
+        justifyContent: "space-between",
+      }}
+    >
+      <p>All Products</p>
+      <p>Favorite Products</p>
     </div>
   );
 };
