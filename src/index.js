@@ -2,9 +2,10 @@ import "./index.css";
 import App from "./App";
 import axios from "axios";
 import React from "react";
+import { store } from "./Redux/store";
 import { Provider } from "react-redux";
 import ReactDOM from "react-dom/client";
-import { store } from "./Redux/store";
+import { BrowserRouter } from "react-router-dom";
 
 axios.defaults.baseURL = "https://upayments-studycase-api.herokuapp.com/api";
 axios.defaults.headers["Authorization"] =
@@ -12,9 +13,11 @@ axios.defaults.headers["Authorization"] =
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
+  // <React.StrictMode>
+  <Provider store={store}>
+    <BrowserRouter>
       <App />
-    </Provider>
-  </React.StrictMode>
+    </BrowserRouter>
+  </Provider>
+  // </React.StrictMode>
 );
