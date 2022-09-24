@@ -35,6 +35,25 @@ const reducer = (state = initialState, action) => {
     case types.GET_CATEGORIES_FAILURE: {
       return { ...state, isLoading: false, isError: true };
     }
+    //-----------------Delete Product From Redux Only--------------------------
+    case types.DELETE_PRODUCT_REDUX_SUCCESS: {
+      let pro = [...state.products];
+      console.log("reducer", pro);
+      let deleteItem = pro.filter((e) => e._id === payload);
+      if (deleteItem) {
+        let newList = pro.filter((e) => e._id !== payload);
+        console.log("deleteItem", newList);
+        return {
+          ...state,
+          isLoading: false,
+          products: newList,
+          isError: false,
+        };
+      }
+    }
+    case types.GET_CATEGORIES_FAILURE: {
+      return { ...state, isLoading: false, isError: true };
+    }
     default:
       return state;
   }

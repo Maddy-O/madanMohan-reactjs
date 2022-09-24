@@ -1,9 +1,9 @@
 import "./App.css";
 import HomePage from "./Pages/HomePage";
-import { Route, Routes } from "react-router-dom";
 import NavBar from "./Components/NavBar";
 import DetailPage from "./Pages/DetailPage";
 import CreatePage from "./Pages/CreatePage";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (

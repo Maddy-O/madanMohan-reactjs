@@ -1,38 +1,47 @@
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
+import ProductCompo from "../Components/ProductCompo";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProducts, getAllCategories } from "../Redux/action";
+import {
+  getAllProducts,
+  getAllCategories,
+  deleteProductRedux,
+} from "../Redux/action";
 
 const HomePage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [filteredData, setFilteredData] = useState([]);
-  const products = useSelector((state) => state.products.products);
-  const categories = useSelector((state) => state.categories.categories);
+  const products = useSelector((state) => state.products);
+  const categories = useSelector((state) => state.categories);
 
   const handleFilter = (cat) => {
-    let fil = products.filter((e) => e.category == cat);
+    let fil = products.filter((e) => e.category === cat);
     setFilteredData(fil || []);
-    console.log("filter", fil);
+    // console.log("filter", fil);
   };
 
-  const handleNvaigate = (details) => {
-    console.log("details", details._id);
-    navigate(`${details._id}`, { state: details });
+  const handleAllProductClick = () => {
+    setFilteredData([]);
+  };
+
+  const handleDelete = (id) => {
+    dispatch(deleteProductRedux(id));
   };
 
   useEffect(() => {
     dispatch(getAllProducts());
     dispatch(getAllCategories());
-  }, [products?.length, categories?.length]);
+  }, []);
 
-  // console.log("Home_Products", products);
-  // console.log("Home_Categories", categories);
+  // console.log(products);
 
   return (
     <div>
       <div style={{ display: "flex", justifyContent: "space-around" }}>
-        <p>All Products</p>
+        <p style={{ cursor: "pointer" }} onClick={handleAllProductClick}>
+          All Products
+        </p>
         <p style={{ cursor: "pointer" }} onClick={() => navigate("/create")}>
           Add New Product
         </p>
@@ -52,31 +61,13 @@ const HomePage = () => {
         {filteredData?.length ? (
           <>
             {filteredData?.map((e) => (
-              <div key={e._id} style={{ width: "300px", border: "1px solid" }}>
-                <div onClick={() => handleNvaigate(e)}>
-                  <h4>{e.name}</h4>
-                  <p>{e.price}</p>
-                </div>
-                <div>
-                  <button>Delete</button>
-                  <button>Add to Fav.</button>
-                </div>
-              </div>
+              <ProductCompo key={e._id} data={e} handleDelete={handleDelete} />
             ))}
           </>
         ) : (
           <>
             {products?.map((e) => (
-              <div key={e._id} style={{ width: "300px", border: "1px solid" }}>
-                <div onClick={() => handleNvaigate(e)}>
-                  <h4>{e.name}</h4>
-                  <p>{e.price}</p>
-                </div>
-                <div>
-                  <button>Delete</button>
-                  <button>Add to Fav.</button>
-                </div>
-              </div>
+              <ProductCompo key={e._id} data={e} handleDelete={handleDelete} />
             ))}
           </>
         )}

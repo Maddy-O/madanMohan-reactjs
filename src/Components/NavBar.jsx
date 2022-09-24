@@ -1,4 +1,5 @@
 import React from "react";
+import logo from "../Assets/logo.jfif";
 
 const NavBar = () => {
   return (
@@ -7,9 +8,24 @@ const NavBar = () => {
         padding: "0px 50px",
         display: "flex",
         justifyContent: "space-between",
+        alignItems: "center",
+        backgroundColor: "black",
+        color: "white",
       }}
     >
-      <p>All Products</p>
+      <div
+        style={{
+          display: "flex",
+          gap: "0px",
+          alignItems: "center",
+          backgroundColor: "black",
+          height: "30px",
+          padding: "5px 10px 5px 0px",
+        }}
+      >
+        <img src={logo} style={{ width: "30px", height: "30px" }} />
+        <b>paymets</b>
+      </div>
       <p>Favorite Products</p>
     </div>
   );
