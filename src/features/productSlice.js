@@ -68,7 +68,7 @@ export const productSlice = createSlice({
       );
       state.products.products = newFav;
       toast.error(`${action.payload.name} deleted from redux`, {
-        position: "bottom-left",
+        position: "bottom-center",
       });
     },
   },

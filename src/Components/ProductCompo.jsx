@@ -23,23 +23,28 @@ const ProductCompo = ({ data }) => {
   return (
     <div
       key={data._id}
-      style={{
-        width: "300px",
-        border: "1px solid",
-        margin: "auto",
-        padding: "5px",
-      }}
+      className="w-300 py-5 px-3 m-auto h-96 bg-slate-900 rounded-xl"
     >
       <div onClick={() => handleNvaigate(data)}>
-        <div style={{ width: "280px", height: "300px", margin: "auto" }}>
-          <img src={data.avatar} style={{ height: "300px", width: "100%" }} />
+        <div className="bg-slate-700 p-2 m-auto max-w-fit h-64 overflow-hidden rounded-lg">
+          <img src={data.avatar} className="h-min rounded-lg" />
         </div>
-        <h4>{data.name}</h4>
-        <p>{data.price}</p>
+        <h4 className="text-left px-3 my-1 text-white">{data.name}</h4>
+        <p className="text-right px-3 my-1 text-white">{data.price} KD</p>
       </div>
       <div>
-        <button onClick={() => handleDelete(data)}>Delete</button>
-        <button onClick={() => handleAddToFavour(data)}>Add to Fav.</button>
+        <button
+          className="mx-3 bg-blue-500 px-5 rounded-lg py-1.5 text-white "
+          onClick={() => handleAddToFavour(data)}
+        >
+          Add to Fav.
+        </button>
+        <button
+          className="mx-3 bg-rose-500 px-5 rounded-lg py-1.5 text-white"
+          onClick={() => handleDelete(data)}
+        >
+          Delete
+        </button>
       </div>
     </div>
   );

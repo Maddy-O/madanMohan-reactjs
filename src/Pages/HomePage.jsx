@@ -26,29 +26,35 @@ const HomePage = () => {
     dispatch(categoriesFetch());
     dispatch(productsFetch());
   }, []);
-
+  console.log(categories);
   return (
-    <div>
-      <div style={{ display: "flex", justifyContent: "space-around" }}>
-        <p style={{ cursor: "pointer" }} onClick={handleAllProductClick}>
+    <div className="bg-slate-600">
+      <div className=" flex flex-wrap gap-5 p-5 justify-around bg-slate-800  ">
+        <p
+          className=" cursor-pointer bg-slate-300 px-5 py-1 rounded-md font-semibold text-slate-800"
+          onClick={handleAllProductClick}
+        >
           All Products
         </p>
-        <p style={{ cursor: "pointer" }} onClick={() => navigate("/create")}>
+        <p
+          className=" cursor-pointer bg-slate-300 px-5 py-1 rounded-md font-semibold text-slate-800"
+          onClick={() => navigate("/create")}
+        >
           Add New Product
         </p>
       </div>
-      <div style={{ display: "flex", justifyContent: "space-around" }}>
+      <div className=" flex flex-wrap gap-5 p-5 justify-around bg-slate-700 ">
         {categories?.map((e) => (
-          <h5
+          <p
             key={e._id}
-            style={{ cursor: "pointer" }}
+            className="cursor-pointer border-b-2 border-white px-1 py-1 text-slate-200 font-semibold"
             onClick={() => handleFilter(e.name)}
           >
             {e.name}
-          </h5>
+          </p>
         ))}
       </div>
-      <div style={{ display: "flex", flexWrap: "wrap" }}>
+      <div class="flex flex-wrap gap-5 my-5">
         {filteredData?.length ? (
           <>
             {filteredData?.map((e) => (

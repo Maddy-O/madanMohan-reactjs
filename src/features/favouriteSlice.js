@@ -19,13 +19,13 @@ const favouriteSlice = createSlice({
       if (itemIndex >= 0) {
         state.favouriteItems[itemIndex].favouriteQuantity += 1;
         toast.info(`${state.favouriteItems[itemIndex].name} added to cart`, {
-          position: "bottom-left",
+          position: "bottom-center",
         });
       } else {
         const tempProduct = { ...action.payload, favouriteQuantity: 1 };
         state.favouriteItems.push(tempProduct);
         toast.success(`${action.payload.name} added to cart`, {
-          position: "bottom-left",
+          position: "bottom-center",
         });
       }
       localStorage.setItem(
@@ -43,7 +43,7 @@ const favouriteSlice = createSlice({
         JSON.stringify(state.favouriteItems)
       );
       toast.error(`${action.payload.name} removed from cart`, {
-        position: "bottom-left",
+        position: "bottom-center",
       });
     },
   },

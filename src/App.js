@@ -8,7 +8,7 @@ import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
+    <div className="bg-slate-900">
       <NavBar />
       <Routes>
         <Route path="/" element={<HomePage />} />
