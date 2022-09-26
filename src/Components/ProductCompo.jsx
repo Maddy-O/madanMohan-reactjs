@@ -1,22 +1,24 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { deleteProductRedux } from "../Redux/action";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { deleteProduct } from "../features/productSlice";
+import { addToFavourite } from "../features/favouriteSlice";
 
-const ProductCompo = ({ data, handleDelete }) => {
+const ProductCompo = ({ data }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleNvaigate = (details) => {
-    // console.log("details", details._id);
     navigate(`${details._id}`, { state: details });
   };
 
-//   const handleDelete = (id) => {
-//     dispatch(deleteProductRedux(id));
-//   };
+  const handleAddToFavour = (product) => {
+    dispatch(addToFavourite(product));
+  };
 
-  const addToFavorite = () => {};
+  const handleDelete = (item) => {
+    dispatch(deleteProduct(item));
+  };
 
   return (
     <div
@@ -36,8 +38,8 @@ const ProductCompo = ({ data, handleDelete }) => {
         <p>{data.price}</p>
       </div>
       <div>
-        <button onClick={() => handleDelete(data._id)}>Delete</button>
-        <button>Add to Fav.</button>
+        <button onClick={() => handleDelete(data)}>Delete</button>
+        <button onClick={() => handleAddToFavour(data)}>Add to Fav.</button>
       </div>
     </div>
   );

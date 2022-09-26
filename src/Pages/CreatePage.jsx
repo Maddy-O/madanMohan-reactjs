@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { postNewProduct } from "../Redux/action";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { postNewProduct } from "../features/productSlice";
 
 const CreatePage = () => {
   const dispatch = useDispatch();
@@ -19,7 +19,6 @@ const CreatePage = () => {
     dispatch(postNewProduct(newProduct));
     alert("product added successfull");
     navigate("/");
-    // console.log(newProduct);
   };
 
   return (

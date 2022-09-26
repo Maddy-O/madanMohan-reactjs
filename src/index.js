@@ -1,23 +1,19 @@
 import "./index.css";
 import App from "./App";
-import axios from "axios";
 import React from "react";
-import { store } from "./Redux/store";
 import { Provider } from "react-redux";
 import ReactDOM from "react-dom/client";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 import { BrowserRouter } from "react-router-dom";
-
-axios.defaults.baseURL = "https://upayments-studycase-api.herokuapp.com/api";
-axios.defaults.headers["Authorization"] =
-  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hZGFuZG9vcjdzQGdtYWlsLmNvbSIsImdpdGh1YiI6Imh0dHBzOi8vZ2l0aHViLmNvbS9NYWRkeS1PIiwiaWF0IjoxNjYzOTk2ODI4LCJleHAiOjE2NjQ0Mjg4Mjh9.YeFpLfWn16YHyWYjDedac8JiGaj9IIOGEVD7Bp3K_qo";
+import { productStore as store } from "./features/productStore";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  // <React.StrictMode>
   <Provider store={store}>
     <BrowserRouter>
+      <ToastContainer />
       <App />
     </BrowserRouter>
   </Provider>
-  // </React.StrictMode>
 );

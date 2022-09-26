@@ -1,7 +1,9 @@
 import React from "react";
 import logo from "../Assets/logo.jfif";
+import { useNavigate } from "react-router-dom";
 
 const NavBar = () => {
+  const navigate = useNavigate();
   return (
     <div
       style={{
@@ -21,12 +23,16 @@ const NavBar = () => {
           backgroundColor: "black",
           height: "30px",
           padding: "5px 10px 5px 0px",
+          cursor: "pointer",
         }}
+        onClick={() => navigate("/")}
       >
         <img src={logo} style={{ width: "30px", height: "30px" }} />
         <b>paymets</b>
       </div>
-      <p>Favorite Products</p>
+      <p style={{ cursor: "pointer" }} onClick={() => navigate("/favourite")}>
+        Favourite Products
+      </p>
     </div>
   );
 };

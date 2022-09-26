@@ -2,39 +2,30 @@ import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import ProductCompo from "../Components/ProductCompo";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getAllProducts,
-  getAllCategories,
-  deleteProductRedux,
-} from "../Redux/action";
+import { categoriesFetch, productsFetch } from "../features/productSlice";
 
 const HomePage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [filteredData, setFilteredData] = useState([]);
-  const products = useSelector((state) => state.products);
-  const categories = useSelector((state) => state.categories);
+  const products = useSelector((state) => state.products.products.products);
+  const categories = useSelector(
+    (state) => state.products.categories.categories
+  );
 
   const handleFilter = (cat) => {
     let fil = products.filter((e) => e.category === cat);
     setFilteredData(fil || []);
-    // console.log("filter", fil);
   };
 
   const handleAllProductClick = () => {
     setFilteredData([]);
   };
 
-  const handleDelete = (id) => {
-    dispatch(deleteProductRedux(id));
-  };
-
   useEffect(() => {
-    dispatch(getAllProducts());
-    dispatch(getAllCategories());
+    dispatch(categoriesFetch());
+    dispatch(productsFetch());
   }, []);
-
-  // console.log(products);
 
   return (
     <div>
@@ -61,13 +52,13 @@ const HomePage = () => {
         {filteredData?.length ? (
           <>
             {filteredData?.map((e) => (
-              <ProductCompo key={e._id} data={e} handleDelete={handleDelete} />
+              <ProductCompo key={e._id} data={e} />
             ))}
           </>
         ) : (
           <>
             {products?.map((e) => (
-              <ProductCompo key={e._id} data={e} handleDelete={handleDelete} />
+              <ProductCompo key={e._id} data={e} />
             ))}
           </>
         )}
