@@ -41,12 +41,12 @@ The project is basically a demo of the e-commerce website.
 
 ## Walkthrough
 
-- Getting the products and categories from the API and list on the Home Page
-- When a product is clicked, it will navigate to Detail Page with that product’s information.
-- we can create a new product by clicking add new product button, which will lead to Create Screen we can create there.
+- Getting the products and categories from the API and listing on the Home Page
+- When we click a product, it will navigate to Detail Page where we can see product’s information.
+- We can also create a new product by clicking add new product button, which will lead to Create Screen where we can add new product.
 - When a category is clicked it will Filter the listed items according to their Categories on homepage.
-- Delete a product by clicking on delete button on homepage product component. (Only from redux.)
-- We can add a product to favorites and see the favorite products under the favorites page. (Only added to redux. It
+- You can delete any product by clicking on delete button on homepage product component. (Only from redux.)
+- We can alse add products to favorites and see the favorite products under the favorites page. (Only added to redux. It
 persist when we reopen the application.)
 
 ## Deployment Link
