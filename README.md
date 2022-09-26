@@ -25,7 +25,7 @@ The project is basically a demo of the e-commerce website.
 
 ## Tech Stack
 
-**Client:** ReactJS, JavaScript, TailwindCSS ans Typescript.
+**Client:** ReactJS, JavaScript, TailwindCSS and Typescript.
 
 ## Authors
 
