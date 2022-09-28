@@ -1,15 +1,23 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, AsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { Product, Categories } from "../model";
+
+interface ProductState {
+  isLoading: boolean;
+  products: Product[];
+  categories: Categories[];
+  isError: boolean;
+}
 
 const initialState = {
   isLoading: false,
   products: [],
   categories: [],
   isError: false,
-};
+} as ProductState;
 
-export const productsFetch = createAsyncThunk(
+export const productsFetch: any = createAsyncThunk(
   "products/productsFetch",
   async () => {
     const response = await axios.get(
@@ -21,11 +29,11 @@ export const productsFetch = createAsyncThunk(
         },
       }
     );
-    return response?.data;
+    return response?.data.products;
   }
 );
 
-export const postNewProduct = createAsyncThunk(
+export const postNewProduct: any = createAsyncThunk(
   "products/postProduct",
   async (payload) => {
     const response = await axios.post(
@@ -42,7 +50,7 @@ export const postNewProduct = createAsyncThunk(
   }
 );
 
-export const categoriesFetch = createAsyncThunk(
+export const categoriesFetch: any = createAsyncThunk(
   "categories/categoriesFetch",
   async () => {
     const response = await axios.get(
@@ -54,7 +62,7 @@ export const categoriesFetch = createAsyncThunk(
         },
       }
     );
-    return response?.data;
+    return response?.data.categories;
   }
 );
 
@@ -63,10 +71,10 @@ export const productSlice = createSlice({
   initialState,
   reducers: {
     deleteProduct(state, action) {
-      const newFav = state.products.products.filter(
-        (item) => item._id !== action.payload._id
+      const newFav: any = state.products.filter(
+        (item: any) => item._id !== action.payload._id
       );
-      state.products.products = newFav;
+      state.products = newFav;
       toast.error(`${action.payload.name} deleted from redux`, {
         position: "bottom-center",
       });

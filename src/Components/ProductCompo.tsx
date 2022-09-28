@@ -4,19 +4,19 @@ import { useNavigate } from "react-router-dom";
 import { deleteProduct } from "../features/productSlice";
 import { addToFavourite } from "../features/favouriteSlice";
 
-const ProductCompo = ({ data }) => {
+const ProductCompo = ({ data }: any) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleNvaigate = (details) => {
+  const handleNvaigate = (details: any) => {
     navigate(`${details._id}`, { state: details });
   };
 
-  const handleAddToFavour = (product) => {
+  const handleAddToFavour = (product: any) => {
     dispatch(addToFavourite(product));
   };
 
-  const handleDelete = (item) => {
+  const handleDelete = (item: any) => {
     dispatch(deleteProduct(item));
   };
 

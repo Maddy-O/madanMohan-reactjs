@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 
 const initialState = {
   favouriteItems: localStorage.getItem("favouriteItems")
-    ? JSON.parse(localStorage.getItem("favouriteItems"))
+    ? JSON.parse(localStorage.getItem("favouriteItems") || "")
     : [],
   favouriteTotalQuantity: 0,
 };
@@ -14,7 +14,7 @@ const favouriteSlice = createSlice({
   reducers: {
     addToFavourite(state, action) {
       const itemIndex = state.favouriteItems.findIndex(
-        (item) => item._id === action.payload._id
+        (item: any) => item._id === action.payload._id
       );
       if (itemIndex >= 0) {
         state.favouriteItems[itemIndex].favouriteQuantity += 1;
@@ -35,7 +35,7 @@ const favouriteSlice = createSlice({
     },
     remoeFromFavourite(state, action) {
       const newFav = state.favouriteItems.filter(
-        (item) => item._id !== action.payload._id
+        (item: any) => item._id !== action.payload._id
       );
       state.favouriteItems = newFav;
       localStorage.setItem(

@@ -1,4 +1,5 @@
 import "./App.css";
+import React from "react";
 import HomePage from "./Pages/HomePage";
 import NavBar from "./Components/NavBar";
 import Favourite from "./Pages/Favourite";
@@ -6,7 +7,7 @@ import DetailPage from "./Pages/DetailPage";
 import CreatePage from "./Pages/CreatePage";
 import { Route, Routes } from "react-router-dom";
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="bg-slate-900">
       <NavBar />
@@ -18,6 +19,6 @@ function App() {
       </Routes>
     </div>
   );
-}
+};
 
 export default App;

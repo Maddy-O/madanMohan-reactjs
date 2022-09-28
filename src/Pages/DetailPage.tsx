@@ -6,7 +6,6 @@ const DetailPage = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
 
-  // console.log(state);
   return (
     <div className="m-auto py-5 bg-slate-600 ">
       <div className="w-20 text-center border-2 p-2 border-white mx-5 cursor-pointer ">

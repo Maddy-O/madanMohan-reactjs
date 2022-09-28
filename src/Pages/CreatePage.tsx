@@ -45,7 +45,7 @@ const CreatePage = () => {
           value={newProduct.price}
           className="p-2"
           onChange={(e) =>
-            setNewProduct({ ...newProduct, price: e.target.value })
+            setNewProduct({ ...newProduct, price: Number(e.target.value) })
           }
         />
         <input

@@ -7,9 +7,11 @@ import { useNavigate } from "react-router-dom";
 const Favourite = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const favouriteItems = useSelector((state) => state.favourite.favouriteItems);
+  const favouriteItems = useSelector(
+    (state: any) => state.favourite.favouriteItems
+  );
 
-  const handleRemoveFavourite = (data) => {
+  const handleRemoveFavourite = (data: any) => {
     dispatch(remoeFromFavourite(data));
   };
 
@@ -41,7 +43,7 @@ const Favourite = () => {
                 </tr>
               </thead>
               <tbody>
-                {favouriteItems?.map((e) => (
+                {favouriteItems?.map((e: any) => (
                   <tr key={e._id} className=" border-b-2 table-row">
                     <td className="flex items-center gap-5 my-5">
                       <div className="bg-slate-700 p-2 w-64 h-64 overflow-hidden rounded-lg">
